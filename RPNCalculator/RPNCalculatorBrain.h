@@ -13,10 +13,11 @@
 - (void)pushOperand:(double)operand;
 - (double)performOperation:(NSString *)operation;
 
-//--------------------Public API ----------------------
-@property (readonly) id program;
 
 + (double)runProgram:(id)program;
 + (NSString *)descriptionOfProgram:(id)program;
+
+// a readonly (Immutable) array that is a copy of the internal programStack
+@property (readonly) id program;
 
 @end

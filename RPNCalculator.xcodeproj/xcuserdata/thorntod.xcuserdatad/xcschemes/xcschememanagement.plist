@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>RPNCalculatorTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2E14C3DD1520282C009774C6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2E1EE82C14FB1AA200F3A227</key>
 		<dict>
 			<key>primary</key>

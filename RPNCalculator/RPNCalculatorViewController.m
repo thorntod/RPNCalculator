@@ -10,11 +10,13 @@
 #import "RPNCalculatorBrain.h"
 
 @interface RPNCalculatorViewController ()
+
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic, strong) RPNCalculatorBrain *brain;
+
 @end
 
-
+//--------------------------------------------------
 
 @implementation RPNCalculatorViewController
 
@@ -23,6 +25,7 @@
 @synthesize brain = _brain;
 
 //--------------------------------------------------
+//Override the getter to ensure a brain has been initialised before trying to return it
 - (RPNCalculatorBrain *)brain {
     if (! _brain) _brain = [[RPNCalculatorBrain alloc] init];
     return _brain;
@@ -31,25 +34,31 @@
 //--------------------------------------------------
 - (IBAction)digitPressed:(UIButton *)sender 
 {
+    // use the title of the UIButton as the digital value
     NSString *digit = sender.currentTitle;
     //NSLog(@"digit pressed = %@", digit);
     
+    // Check if this is not the initial number entered
     if (self.userIsInTheMiddleOfEnteringANumber) {
 
         //check for a valid floating point number
+        // if there is already a . in the number ignore any subsequent . key presses
         if ([digit isEqualToString:@"."]) {
             NSNumberFormatter *NF = [[NSNumberFormatter alloc] init];
             [NF setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber *testNumber = [NF numberFromString:[self.display.text stringByAppendingString:digit]];
             
+            // if there is already a valid float in the display a second one will invalidate it so ignore it
             if (![testNumber floatValue]) {
                 digit = @"";
             }
         }
 
+        // append the entered digital to the number in the display
         self.display.text = [self.display.text stringByAppendingString:digit];
 
     } else {
+        // This is the first digit entered so display it and set the entering flag to true
         self.display.text = digit;
         self.userIsInTheMiddleOfEnteringANumber = TRUE;
     }
@@ -93,8 +102,6 @@
         }
     }
 
-
-    
     
     
     if (!skipPerformOperation) {

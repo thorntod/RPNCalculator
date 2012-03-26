@@ -15,17 +15,18 @@
 
 @end
 
+
+
 //========================= IMPLEMENTATION =========================
 @implementation RPNCalculatorBrain
+
 @synthesize programStack = _programStack;
 
 
 //-------------------------------------------------
 - (NSMutableArray *)programStack {
     
-    if (_programStack == nil) {
-        _programStack = [[NSMutableArray alloc] init ];
-    }
+    if (! _programStack) _programStack = [[NSMutableArray alloc] init ];
     return _programStack;
 }
 
@@ -35,7 +36,8 @@
     return [self.programStack copy];
 }
 
-//-------------------------------------------------
+
+//--------------===========================------------------
 - (void)pushOperand:(double)operand {
     
     [self.programStack addObject:[NSNumber numberWithDouble:operand]];

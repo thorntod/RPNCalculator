@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E14C3E11520282C009774C6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83114FB1AA200F3A227 /* UIKit.framework */; };
+		2E14C3E21520282C009774C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83314FB1AA200F3A227 /* Foundation.framework */; };
+		2E14C3E81520282C009774C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E14C3E61520282C009774C6 /* InfoPlist.strings */; };
+		2E14C3EB1520282C009774C6 /* RPNCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14C3EA1520282C009774C6 /* RPNCalculatorTests.m */; };
+		2E14C3F4152034D4009774C6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C3F3152034D4009774C6 /* SenTestingKit.framework */; };
+		2E14C3F5152038DB009774C6 /* RPNCalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1EE84F14FB269500F3A227 /* RPNCalculatorBrain.m */; };
 		2E1EE83214FB1AA200F3A227 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83114FB1AA200F3A227 /* UIKit.framework */; };
 		2E1EE83414FB1AA200F3A227 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83314FB1AA200F3A227 /* Foundation.framework */; };
 		2E1EE83614FB1AA200F3A227 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83514FB1AA200F3A227 /* CoreGraphics.framework */; };
@@ -18,7 +24,25 @@
 		2E1EE85014FB269500F3A227 /* RPNCalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1EE84F14FB269500F3A227 /* RPNCalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2E14C3F1152033B6009774C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2E1EE82414FB1AA100F3A227 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E1EE82C14FB1AA200F3A227;
+			remoteInfo = RPNCalculator;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2E14C3DE1520282C009774C6 /* RPNCalculatorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RPNCalculatorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E14C3DF1520282C009774C6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2E14C3E51520282C009774C6 /* RPNCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RPNCalculatorTests-Info.plist"; sourceTree = "<group>"; };
+		2E14C3E71520282C009774C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2E14C3E91520282C009774C6 /* RPNCalculatorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPNCalculatorTests.h; sourceTree = "<group>"; };
+		2E14C3EA1520282C009774C6 /* RPNCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPNCalculatorTests.m; sourceTree = "<group>"; };
+		2E14C3EC1520282C009774C6 /* RPNCalculatorTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RPNCalculatorTests-Prefix.pch"; sourceTree = "<group>"; };
+		2E14C3F3152034D4009774C6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2E1EE82D14FB1AA200F3A227 /* RPNCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RPNCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E1EE83114FB1AA200F3A227 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2E1EE83314FB1AA200F3A227 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +61,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2E14C3DA1520282C009774C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E14C3F4152034D4009774C6 /* SenTestingKit.framework in Frameworks */,
+				2E14C3E11520282C009774C6 /* UIKit.framework in Frameworks */,
+				2E14C3E21520282C009774C6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E1EE82A14FB1AA200F3A227 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -50,10 +84,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E14C3E31520282C009774C6 /* RPNCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				2E14C3E91520282C009774C6 /* RPNCalculatorTests.h */,
+				2E14C3EA1520282C009774C6 /* RPNCalculatorTests.m */,
+				2E14C3E41520282C009774C6 /* Supporting Files */,
+			);
+			path = RPNCalculatorTests;
+			sourceTree = "<group>";
+		};
+		2E14C3E41520282C009774C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E14C3E51520282C009774C6 /* RPNCalculatorTests-Info.plist */,
+				2E14C3E61520282C009774C6 /* InfoPlist.strings */,
+				2E14C3EC1520282C009774C6 /* RPNCalculatorTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		2E1EE82214FB1AA100F3A227 = {
 			isa = PBXGroup;
 			children = (
+				2E14C3F3152034D4009774C6 /* SenTestingKit.framework */,
 				2E1EE83714FB1AA200F3A227 /* RPNCalculator */,
+				2E14C3E31520282C009774C6 /* RPNCalculatorTests */,
 				2E1EE83014FB1AA200F3A227 /* Frameworks */,
 				2E1EE82E14FB1AA200F3A227 /* Products */,
 			);
@@ -63,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				2E1EE82D14FB1AA200F3A227 /* RPNCalculator.app */,
+				2E14C3DE1520282C009774C6 /* RPNCalculatorTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +130,7 @@
 				2E1EE83114FB1AA200F3A227 /* UIKit.framework */,
 				2E1EE83314FB1AA200F3A227 /* Foundation.framework */,
 				2E1EE83514FB1AA200F3A227 /* CoreGraphics.framework */,
+				2E14C3DF1520282C009774C6 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -80,8 +138,6 @@
 		2E1EE83714FB1AA200F3A227 /* RPNCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				2E1EE84014FB1AA200F3A227 /* RPNCalculatorAppDelegate.h */,
-				2E1EE84114FB1AA200F3A227 /* RPNCalculatorAppDelegate.m */,
 				2E1EE84314FB1AA200F3A227 /* MainStoryboard.storyboard */,
 				2E1EE84E14FB269500F3A227 /* RPNCalculatorBrain.h */,
 				2E1EE84F14FB269500F3A227 /* RPNCalculatorBrain.m */,
@@ -95,6 +151,8 @@
 		2E1EE83814FB1AA200F3A227 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2E1EE84014FB1AA200F3A227 /* RPNCalculatorAppDelegate.h */,
+				2E1EE84114FB1AA200F3A227 /* RPNCalculatorAppDelegate.m */,
 				2E1EE83914FB1AA200F3A227 /* RPNCalculator-Info.plist */,
 				2E1EE83A14FB1AA200F3A227 /* InfoPlist.strings */,
 				2E1EE83D14FB1AA200F3A227 /* main.m */,
@@ -106,6 +164,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2E14C3DD1520282C009774C6 /* RPNCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E14C3EF1520282C009774C6 /* Build configuration list for PBXNativeTarget "RPNCalculatorTests" */;
+			buildPhases = (
+				2E14C3D91520282C009774C6 /* Sources */,
+				2E14C3DA1520282C009774C6 /* Frameworks */,
+				2E14C3DB1520282C009774C6 /* Resources */,
+				2E14C3DC1520282C009774C6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E14C3F2152033B6009774C6 /* PBXTargetDependency */,
+			);
+			name = RPNCalculatorTests;
+			productName = RPNCalculatorTests;
+			productReference = 2E14C3DE1520282C009774C6 /* RPNCalculatorTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		2E1EE82C14FB1AA200F3A227 /* RPNCalculator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E1EE84B14FB1AA200F3A227 /* Build configuration list for PBXNativeTarget "RPNCalculator" */;
@@ -146,11 +223,20 @@
 			projectRoot = "";
 			targets = (
 				2E1EE82C14FB1AA200F3A227 /* RPNCalculator */,
+				2E14C3DD1520282C009774C6 /* RPNCalculatorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2E14C3DB1520282C009774C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E14C3E81520282C009774C6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E1EE82B14FB1AA200F3A227 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -162,7 +248,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E14C3DC1520282C009774C6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		2E14C3D91520282C009774C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E14C3EB1520282C009774C6 /* RPNCalculatorTests.m in Sources */,
+				2E14C3F5152038DB009774C6 /* RPNCalculatorBrain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2E1EE82914FB1AA200F3A227 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,7 +287,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2E14C3F2152033B6009774C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2E1EE82C14FB1AA200F3A227 /* RPNCalculator */;
+			targetProxy = 2E14C3F1152033B6009774C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		2E14C3E61520282C009774C6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E14C3E71520282C009774C6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		2E1EE83A14FB1AA200F3A227 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -196,6 +323,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2E14C3ED1520282C009774C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RPNCalculatorTests/RPNCalculatorTests-Prefix.pch";
+				INFOPLIST_FILE = "RPNCalculatorTests/RPNCalculatorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2E14C3EE1520282C009774C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RPNCalculatorTests/RPNCalculatorTests-Prefix.pch";
+				INFOPLIST_FILE = "RPNCalculatorTests/RPNCalculatorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		2E1EE84914FB1AA200F3A227 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -266,6 +423,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2E14C3EF1520282C009774C6 /* Build configuration list for PBXNativeTarget "RPNCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E14C3ED1520282C009774C6 /* Debug */,
+				2E14C3EE1520282C009774C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2E1EE82714FB1AA100F3A227 /* Build configuration list for PBXProject "RPNCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -282,6 +447,7 @@
 				2E1EE84D14FB1AA200F3A227 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
