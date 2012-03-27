@@ -14,6 +14,8 @@
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic, strong) RPNCalculatorBrain *brain;
 
+@property (nonatomic) NSMutableDictionary *variablesDict;
+
 @end
 
 //--------------------------------------------------
@@ -21,8 +23,15 @@
 @implementation RPNCalculatorViewController
 
 @synthesize display = _display;
+@synthesize infixDisplay = _infixDisplay;
+@synthesize xLabel = _xLabel;
+@synthesize yLabel = _yLabel;
+@synthesize zLabel = _zLabel;
+
+@synthesize variablesDict = _variablesDict;
 @synthesize userIsInTheMiddleOfEnteringANumber = _userIsInTHeMiddleOfEnteringANumber;
 @synthesize brain = _brain;
+
 
 //--------------------------------------------------
 //Override the getter to ensure a brain has been initialised before trying to return it
@@ -30,6 +39,57 @@
     if (! _brain) _brain = [[RPNCalculatorBrain alloc] init];
     return _brain;
 }
+
+//--------------------------------------------------
+- (NSDictionary *)variablesDict {
+    if (!_variablesDict) _variablesDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"x",[NSNumber numberWithInt:0],@"y",[NSNumber numberWithInt:0],@"z",[NSNumber numberWithInt:0], nil];
+    return _variablesDict;
+}
+//--------------------------------------------------
+- (IBAction)testButtonPressed:(UIButton *)sender {
+    
+    NSString *currentTitle = sender.currentTitle;
+    NSInteger xValue;
+    NSInteger yValue;
+    NSInteger zValue;
+    
+    if ([currentTitle isEqualToString:@"Test 1"]) {
+        xValue = 3;
+        yValue = 6;
+        zValue = 9;
+    } else if ([currentTitle isEqualToString:@"Test 2"]) {
+        xValue = 1;
+        yValue = 2;
+        zValue = 3;
+    } else if ([currentTitle isEqualToString:@"Test 3"]) {
+        xValue = 4;
+        yValue = 12;
+        zValue = 26;
+    }
+    [self.variablesDict setValue:[NSNumber numberWithInt:xValue] forKey:@"x"];
+    [self.variablesDict setValue:[NSNumber numberWithInt:yValue] forKey:@"y"];
+    [self.variablesDict setValue:[NSNumber numberWithInt:zValue] forKey:@"z"];
+    
+    self.xLabel.text = [NSString stringWithFormat:@"x = %i", xValue];
+    self.yLabel.text = [NSString stringWithFormat:@"y = %i", yValue];
+    self.zLabel.text = [NSString stringWithFormat:@"z = %i", zValue];
+}
+//--------------------------------------------------
+- (NSInteger)xValue {    
+    return [[self.variablesDict objectForKey:@"x"] intValue];
+}
+
+//--------------------------------------------------
+- (NSInteger)yValue {    
+    return [[self.variablesDict objectForKey:@"y"] intValue];
+}
+
+//--------------------------------------------------
+- (NSInteger)zValue {    
+    return [[self.variablesDict objectForKey:@"z"] intValue];
+}
+
+
 
 //--------------------------------------------------
 - (IBAction)digitPressed:(UIButton *)sender 
@@ -62,63 +122,53 @@
         self.display.text = digit;
         self.userIsInTheMiddleOfEnteringANumber = TRUE;
     }
+    self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain];
+
 }
 
 //--------------------------------------------------
 - (IBAction)operationPressed:(UIButton *)sender {
 
     NSString *operationString = sender.currentTitle;
-    BOOL skipPerformOperation = FALSE;
     
-
-    if ([operationString isEqualToString:@"1/x"]) {
-        NSLog(@"1/x pressed");
-        if ([self.display.text doubleValue]) {
-            NSLog(@"not zero");
-            self.display.text = [NSString stringWithFormat:@"%g", (1 / [self.display.text doubleValue])];
-            skipPerformOperation = TRUE;
-        }
-    } else if ([operationString isEqualToString:@"+/-"]) {
-        NSLog(@"+/- pressed");
-        if ([self.display.text doubleValue] > 0) {
-            self.display.text = [NSString stringWithFormat:@"%g", (-1 * [self.display.text doubleValue])];
-        } else {
-            self.display.text = [NSString stringWithFormat:@"%g", (ABS([self.display.text doubleValue]))];
-        }   
-        skipPerformOperation = TRUE;
-    } else   if ([operationString isEqualToString:@"sin"]) {
-        NSLog(@"sin pressed");
-        if ([self.display.text doubleValue]) {
-            //NSLog(@"not zero");
-            self.display.text = [NSString stringWithFormat:@"%g", (sin([self.display.text doubleValue]*M_PI/180))];
-            skipPerformOperation = TRUE;
-        }
-    } else   if ([operationString isEqualToString:@"cos"]) {
-        NSLog(@"sin pressed");
-        if ([self.display.text doubleValue]) {
-            //NSLog(@"not zero");
-            self.display.text = [NSString stringWithFormat:@"%g", (cos([self.display.text doubleValue]*M_PI/180))];
-            skipPerformOperation = TRUE;
-        }
+    if (self.userIsInTheMiddleOfEnteringANumber){
+        NSLog(@"operationpressed pressed - entering number");
+        [self enterPressed];
     }
+    [self.brain performOperation:operationString];
+    double result = [self.brain performOperation:operationString];
+    NSString *resultString = [NSString stringWithFormat:@"%g", result];
+    self.display.text = resultString;
+    self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain.program];
 
     
+}
+
+//--------------------------------------------------
+- (IBAction)variableValuePressed:(UIButton *)sender {
+  
+    NSString *currentTitle = sender.currentTitle;
+    NSInteger varValue;
     
-    if (!skipPerformOperation) {
-        if (self.userIsInTheMiddleOfEnteringANumber){
-            NSLog(@"opertion pressed - entering number");
-            [self enterPressed];
-        }
-        double result = [self.brain performOperation:operationString];
-        NSString *resultString = [NSString stringWithFormat:@"%g", result];
-        self.display.text = resultString;
+    if ([currentTitle isEqualToString:@"x"]) {
+        varValue = self.xValue;
+    } else if ([currentTitle isEqualToString:@"y"]) {
+        varValue = self.yValue;
+    } else if ([currentTitle isEqualToString:@"z"]) {
+        varValue = self.zValue;
     }
+    [self.brain pushOperand:currentTitle];
+    NSLog(@"varvakeu %i", varValue);
+
 }
 
 //--------------------------------------------------
 - (IBAction)enterPressed {
-    [self.brain pushOperand:[self.display.text doubleValue]];
-    self.userIsInTheMiddleOfEnteringANumber = FALSE;
+    if (self.userIsInTheMiddleOfEnteringANumber){
+        [self.brain pushOperand:self.display.text];
+        NSLog(@"MMMM Brain: %@", [self.brain program]);
+        self.userIsInTheMiddleOfEnteringANumber = FALSE;
+    }
 }
 
 

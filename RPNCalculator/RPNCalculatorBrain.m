@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSMutableArray *programStack;
 
+
 @end
 
 
@@ -20,7 +21,32 @@
 //========================= IMPLEMENTATION =========================
 @implementation RPNCalculatorBrain
 
+static NSSet *_singleOperandSet;
+static NSSet *_twoOperandSet;
+static NSSet *_noOperandSet;
+
 @synthesize programStack = _programStack;
+
+
+//-------------------------------------------------
+- (NSSet *)singleOperandSet {
+    if (!_singleOperandSet) {
+        _singleOperandSet = [NSSet setWithObjects:@"sqrt",@"sin",@"cos", nil];
+    }
+    return _singleOperandSet;
+}
+- (NSSet *)twoOperandSet {
+    if (!_twoOperandSet) {
+        _twoOperandSet = [NSSet setWithObjects:@"+",@"-",@"*",@"/", nil];
+    }
+    return _twoOperandSet;
+}
+- (NSSet *)noOperandSet {
+    if (!_noOperandSet) {
+        _noOperandSet = [NSSet setWithObjects:@"PI", nil];
+    }
+    return _noOperandSet;
+}
 
 
 //-------------------------------------------------
@@ -38,16 +64,21 @@
 
 
 //--------------===========================------------------
-- (void)pushOperand:(double)operand {
+- (void)pushOperand:(id)operand {
+    // add the current operand to the top of the stack
     
-    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
+    [self.programStack addObject:operand];
+    NSLog(@"pushOperand: after - stack: %@", self.programStack);
+    
 }
 
 //-------------------------------------------------
 - (double)popOperand {
+    NSLog(@"start: popOperand");
     
     NSNumber *operandObject = [self.programStack lastObject];
     if (operandObject) [self.programStack removeLastObject];
+    NSLog(@"stack: %@", self.programStack);
     return [operandObject doubleValue];
 }
 
@@ -99,5 +130,25 @@
     }
     return [self popOperandOffStack:stack];
 }
+
+//-------------------------------------------------
++ (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues {
+    NSMutableArray *stack;
+    if ([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+    }
+    return [self popOperandOffStack:stack];
+}
+
+
+//-------------------------------------------------
++ (NSSet *)variablesUsedInProgram:(id)program{
+    
+    NSSet *variableSet = [[NSSet alloc] initWithObjects:@"x",@"y", nil];
+    
+    return variableSet;
+    
+}
+
 
 @end

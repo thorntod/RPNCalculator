@@ -11,7 +11,6 @@
 		2E14C3E21520282C009774C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83314FB1AA200F3A227 /* Foundation.framework */; };
 		2E14C3E81520282C009774C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E14C3E61520282C009774C6 /* InfoPlist.strings */; };
 		2E14C3EB1520282C009774C6 /* RPNCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14C3EA1520282C009774C6 /* RPNCalculatorTests.m */; };
-		2E14C3F4152034D4009774C6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C3F3152034D4009774C6 /* SenTestingKit.framework */; };
 		2E14C3F5152038DB009774C6 /* RPNCalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1EE84F14FB269500F3A227 /* RPNCalculatorBrain.m */; };
 		2E1EE83214FB1AA200F3A227 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83114FB1AA200F3A227 /* UIKit.framework */; };
 		2E1EE83414FB1AA200F3A227 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E1EE83314FB1AA200F3A227 /* Foundation.framework */; };
@@ -22,6 +21,7 @@
 		2E1EE84514FB1AA200F3A227 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E1EE84314FB1AA200F3A227 /* MainStoryboard.storyboard */; };
 		2E1EE84814FB1AA200F3A227 /* RPNCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1EE84714FB1AA200F3A227 /* RPNCalculatorViewController.m */; };
 		2E1EE85014FB269500F3A227 /* RPNCalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E1EE84F14FB269500F3A227 /* RPNCalculatorBrain.m */; };
+		2E6E6BBF15204FCF00C4B897 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E14C3F3152034D4009774C6 /* SenTestingKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		2E14C3DE1520282C009774C6 /* RPNCalculatorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RPNCalculatorTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E14C3DF1520282C009774C6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2E14C3E51520282C009774C6 /* RPNCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RPNCalculatorTests-Info.plist"; sourceTree = "<group>"; };
 		2E14C3E71520282C009774C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E14C3E91520282C009774C6 /* RPNCalculatorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPNCalculatorTests.h; sourceTree = "<group>"; };
@@ -65,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E14C3F4152034D4009774C6 /* SenTestingKit.framework in Frameworks */,
+				2E6E6BBF15204FCF00C4B897 /* SenTestingKit.framework in Frameworks */,
 				2E14C3E11520282C009774C6 /* UIKit.framework in Frameworks */,
 				2E14C3E21520282C009774C6 /* Foundation.framework in Frameworks */,
 			);
@@ -107,7 +106,6 @@
 		2E1EE82214FB1AA100F3A227 = {
 			isa = PBXGroup;
 			children = (
-				2E14C3F3152034D4009774C6 /* SenTestingKit.framework */,
 				2E1EE83714FB1AA200F3A227 /* RPNCalculator */,
 				2E14C3E31520282C009774C6 /* RPNCalculatorTests */,
 				2E1EE83014FB1AA200F3A227 /* Frameworks */,
@@ -127,10 +125,10 @@
 		2E1EE83014FB1AA200F3A227 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E14C3F3152034D4009774C6 /* SenTestingKit.framework */,
 				2E1EE83114FB1AA200F3A227 /* UIKit.framework */,
 				2E1EE83314FB1AA200F3A227 /* Foundation.framework */,
 				2E1EE83514FB1AA200F3A227 /* CoreGraphics.framework */,
-				2E14C3DF1520282C009774C6 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,9 +136,9 @@
 		2E1EE83714FB1AA200F3A227 /* RPNCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				2E1EE84314FB1AA200F3A227 /* MainStoryboard.storyboard */,
 				2E1EE84E14FB269500F3A227 /* RPNCalculatorBrain.h */,
 				2E1EE84F14FB269500F3A227 /* RPNCalculatorBrain.m */,
+				2E1EE84314FB1AA200F3A227 /* MainStoryboard.storyboard */,
 				2E1EE84614FB1AA200F3A227 /* RPNCalculatorViewController.h */,
 				2E1EE84714FB1AA200F3A227 /* RPNCalculatorViewController.m */,
 				2E1EE83814FB1AA200F3A227 /* Supporting Files */,
@@ -430,6 +428,7 @@
 				2E14C3EE1520282C009774C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E1EE82714FB1AA100F3A227 /* Build configuration list for PBXProject "RPNCalculator" */ = {
 			isa = XCConfigurationList;
