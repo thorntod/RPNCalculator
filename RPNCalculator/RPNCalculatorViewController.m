@@ -14,7 +14,7 @@
 @property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @property (nonatomic, strong) RPNCalculatorBrain *brain;
 
-@property (nonatomic) NSMutableDictionary *variablesDict;
+@property (nonatomic, strong) NSMutableDictionary *variablesDict;
 
 @end
 
@@ -40,11 +40,11 @@
     return _brain;
 }
 
-//--------------------------------------------------
 - (NSDictionary *)variablesDict {
-    if (!_variablesDict) _variablesDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"x",[NSNumber numberWithInt:0],@"y",[NSNumber numberWithInt:0],@"z",[NSNumber numberWithInt:0], nil];
+    if (! _variablesDict) _variablesDict = [[NSMutableDictionary alloc] init];
     return _variablesDict;
 }
+
 //--------------------------------------------------
 - (IBAction)testButtonPressed:(UIButton *)sender {
     
@@ -66,6 +66,7 @@
         yValue = 12;
         zValue = 26;
     }
+    
     [self.variablesDict setValue:[NSNumber numberWithInt:xValue] forKey:@"x"];
     [self.variablesDict setValue:[NSNumber numberWithInt:yValue] forKey:@"y"];
     [self.variablesDict setValue:[NSNumber numberWithInt:zValue] forKey:@"z"];
@@ -73,6 +74,12 @@
     self.xLabel.text = [NSString stringWithFormat:@"x = %i", xValue];
     self.yLabel.text = [NSString stringWithFormat:@"y = %i", yValue];
     self.zLabel.text = [NSString stringWithFormat:@"z = %i", zValue];
+    
+    double result = [RPNCalculatorBrain runProgram:self.brain.program usingVariableValues:self.variablesDict];
+    NSString *resultString = [NSString stringWithFormat:@"%g", result];
+    self.display.text = resultString;
+    self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain.program];
+
 }
 //--------------------------------------------------
 - (NSInteger)xValue {    
@@ -122,7 +129,6 @@
         self.display.text = digit;
         self.userIsInTheMiddleOfEnteringANumber = TRUE;
     }
-    self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain];
 
 }
 
@@ -130,18 +136,17 @@
 - (IBAction)operationPressed:(UIButton *)sender {
 
     NSString *operationString = sender.currentTitle;
-    
-    if (self.userIsInTheMiddleOfEnteringANumber){
-        NSLog(@"operationpressed pressed - entering number");
-        [self enterPressed];
-    }
-    [self.brain performOperation:operationString];
-    double result = [self.brain performOperation:operationString];
+    [self enterPressed];
+    [self.brain pushOperand:operationString];
+ 
+//    [self.brain performOperation:operationString];
+//    double result = [self.brain performOperation:operationString];
+    NSLog(@"vaariables dict %@", self.variablesDict);
+    double result = [RPNCalculatorBrain runProgram:self.brain.program usingVariableValues:self.variablesDict];
     NSString *resultString = [NSString stringWithFormat:@"%g", result];
     self.display.text = resultString;
     self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain.program];
 
-    
 }
 
 //--------------------------------------------------
@@ -158,18 +163,50 @@
         varValue = self.zValue;
     }
     [self.brain pushOperand:currentTitle];
-    NSLog(@"varvakeu %i", varValue);
+    //NSLog(@"varvalue %i", varValue);
 
+}
+
+
+//--------------------------------------------------
+- (IBAction)undoPressed {
+    if (self.userIsInTheMiddleOfEnteringANumber){
+        //remove last digit
+        //if is last digit set flag to false
+        int lengthOfDisplay = self.display.text.length;
+        
+        NSString *newString = [self.display.text substringToIndex:lengthOfDisplay - 1];
+        self.display.text = newString;
+        if (lengthOfDisplay == 1) {
+            self.userIsInTheMiddleOfEnteringANumber = FALSE;
+        }
+    } else {
+        [self.brain popOffStack];
+        NSLog(@"vaariables dict %@", self.variablesDict);
+        double result = [RPNCalculatorBrain runProgram:self.brain.program usingVariableValues:self.variablesDict];
+        NSString *resultString = [NSString stringWithFormat:@"%g", result];
+        self.display.text = resultString;
+        self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain.program];
+    }    
+    NSLog(@"stackcheck: %@", self.brain.program);
+        
 }
 
 //--------------------------------------------------
 - (IBAction)enterPressed {
     if (self.userIsInTheMiddleOfEnteringANumber){
-        [self.brain pushOperand:self.display.text];
+        
+        NSNumber *digitToPush = [[NSNumber alloc] initWithDouble:[self.display.text doubleValue]];
+        [self.brain pushOperand:digitToPush];
+
         NSLog(@"MMMM Brain: %@", [self.brain program]);
         self.userIsInTheMiddleOfEnteringANumber = FALSE;
     }
 }
 
-
+//--------------------------------------------------
+- (IBAction)clearButtonPressed {
+    self.display.text = @"";
+    self.userIsInTheMiddleOfEnteringANumber = FALSE;
+}
 @end

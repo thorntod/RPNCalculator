@@ -12,7 +12,7 @@
 
 - (void)pushOperand:(id)operand;
 - (double)performOperation:(NSString *)operation;
-
+- (id)popOffStack;
 
 + (double)runProgram:(id)program;
 + (double)runProgram:(id)program usingVariableValues:(NSDictionary *)variableValues;
