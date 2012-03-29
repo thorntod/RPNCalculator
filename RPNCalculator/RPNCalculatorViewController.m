@@ -141,7 +141,7 @@
  
 //    [self.brain performOperation:operationString];
 //    double result = [self.brain performOperation:operationString];
-    NSLog(@"vaariables dict %@", self.variablesDict);
+    //NSLog(@"vaariables dict %@", self.variablesDict);
     double result = [RPNCalculatorBrain runProgram:self.brain.program usingVariableValues:self.variablesDict];
     NSString *resultString = [NSString stringWithFormat:@"%g", result];
     self.display.text = resultString;
@@ -182,13 +182,13 @@
         }
     } else {
         [self.brain popOffStack];
-        NSLog(@"vaariables dict %@", self.variablesDict);
+        //NSLog(@"vaariables dict %@", self.variablesDict);
         double result = [RPNCalculatorBrain runProgram:self.brain.program usingVariableValues:self.variablesDict];
         NSString *resultString = [NSString stringWithFormat:@"%g", result];
         self.display.text = resultString;
         self.infixDisplay.text = [RPNCalculatorBrain descriptionOfProgram:self.brain.program];
     }    
-    NSLog(@"stackcheck: %@", self.brain.program);
+    //NSLog(@"stackcheck: %@", self.brain.program);
         
 }
 
@@ -199,7 +199,7 @@
         NSNumber *digitToPush = [[NSNumber alloc] initWithDouble:[self.display.text doubleValue]];
         [self.brain pushOperand:digitToPush];
 
-        NSLog(@"MMMM Brain: %@", [self.brain program]);
+        //NSLog(@"MMMM Brain: %@", [self.brain program]);
         self.userIsInTheMiddleOfEnteringANumber = FALSE;
     }
 }

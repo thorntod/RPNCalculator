@@ -94,17 +94,17 @@ static NSArray *_operatorsInOrder = nil;
     // add the current operand to the top of the stack
     
     [self.programStack addObject:operand];
-    NSLog(@"pushOperand: after - stack: %@", self.programStack);
+    //NSLog(@"pushOperand: after - stack: %@", self.programStack);
     
 }
 
 //-------------------------------------------------
 - (double)popOperand {
-    NSLog(@"start: popOperand");
+    //NSLog(@"start: popOperand");
     
     NSNumber *operandObject = [self.programStack lastObject];
     if (operandObject) [self.programStack removeLastObject];
-    NSLog(@"stack: %@", self.programStack);
+    //NSLog(@"stack: %@", self.programStack);
     return [operandObject doubleValue];
 }
 
@@ -241,7 +241,7 @@ static NSArray *_operatorsInOrder = nil;
     if ([program isKindOfClass:[NSArray class]]) {
         stack = [program mutableCopy];
     }
-    NSLog(@"runProgramwith %@", variableValues);
+    //NSLog(@"runProgramwith %@", variableValues);
     return [self popOperandOffStack:stack usingVariableValues:variableValues];
 }
 
